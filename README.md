@@ -25,7 +25,7 @@ Este projeto implementa uma API RESTful para análise dos vencedores da categori
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/golden-raspberry-api.git
+git clone https://github.com/majadarosa/raspberry-awards.git
 cd golden-raspberry-api
 ```
 
