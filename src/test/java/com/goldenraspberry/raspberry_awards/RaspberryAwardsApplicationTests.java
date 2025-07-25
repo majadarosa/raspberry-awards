@@ -31,13 +31,25 @@ class RaspberryAwardsApplicationTests {
 		ResponseEntity<MovieWinListDTO> response = restTemplate.getForEntity(url, MovieWinListDTO.class);
 
 		assertTrue(response.getStatusCode().equals(HttpStatus.OK));
-		assertNotNull(response.getBody());
+		assertTrue(response.getBody() != null);
+		
+		MovieWinDTO expectedMinEntry = new MovieWinDTO();
+		expectedMinEntry.setFollowingWin(2009);
+		expectedMinEntry.setInterval(1);
+		expectedMinEntry.setPreviousWin(2008);
+		expectedMinEntry.setProducer("Producer 1");
+		
+		MovieWinDTO expectedMaxEntry = new MovieWinDTO();
+		expectedMaxEntry.setFollowingWin(2010);
+		expectedMaxEntry.setInterval(20);
+		expectedMaxEntry.setPreviousWin(1990);
+		expectedMaxEntry.setProducer("Producer 2");
 
-		List<MovieWinDTO> minList = response.getBody().getMin();
-		List<MovieWinDTO> maxList = response.getBody().getMax();
 
-		assertTrue(!minList.isEmpty());
-		assertTrue(!maxList.isEmpty());
+        
+        assertTrue(response.getBody().getMin().contains(expectedMinEntry));
+        assertTrue(response.getBody().getMax().contains(expectedMaxEntry));
+
 	}
 
 }

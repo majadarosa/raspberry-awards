@@ -1,5 +1,7 @@
 package com.goldenraspberry.dto;
 
+import java.util.Objects;
+
 public class MovieWinDTO {
 
 	private Integer followingWin;
@@ -38,5 +40,16 @@ public class MovieWinDTO {
 	public void setPreviousWin(Integer previousWin) {
 		this.previousWin = previousWin;
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieWinDTO that = (MovieWinDTO) o;
+        return Objects.equals(followingWin, that.followingWin) &&
+               Objects.equals(producer, that.producer) &&
+               Objects.equals(interval, that.interval) &&
+               Objects.equals(previousWin, that.previousWin);
+    }
 
 }
